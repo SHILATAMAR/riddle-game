@@ -1,0 +1,35 @@
+{
+  "riddles": [
+    {
+      "id": 1,
+      "name": "Easy Math",
+      "taskDescription": "What is 5 + 3?",
+      "correctAnswer": "8"
+    },
+    {
+      "name": "math1",
+      "taskDescription": "what is 100-20?",
+      "correctAnswer": "80",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Hard Math",
+      "taskDescription": "What is 12 x 12?",
+      "correctAnswer": "144"
+    },
+    {
+      "name": "math3",
+      "taskDescription": "what is 12*3?",
+      "correctAnswer": "36",
+      "id": 4
+    }
+  ],
+  "players": [
+    {
+      "name": "s",
+      "lowestTime": 19,
+      "id": 1
+    }
+  ]
+}
