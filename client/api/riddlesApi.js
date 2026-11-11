@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000/riddles";
+const BASE_URL = "http://localhost:3000/api/riddles";
 
 export async function getAllRiddles() {
     try {
@@ -43,8 +43,12 @@ export async function updateRiddle(id, riddle) {
 
 export async function deleteRiddle(id) {
     try {
-        const res = await fetch(`${BASE_URL}/${id}, { method: "DELETE" }`);
+        const res = await fetch(`${BASE_URL}/${id}`, {
+            method: "DELETE"
+        });
+
         if (!res.ok) throw new Error(`Could not delete riddle (${res.status})`);
+
         return true;
     } catch (error) {
         console.error("Delete riddle error:", error.message);

@@ -2,9 +2,9 @@
 import readline from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
 
-import {getAllRiddles, createRiddle, updateRiddle, deleteRiddle} from "./api/riddlesApi.js";
+import { getAllRiddles, createRiddle, updateRiddle, deleteRiddle } from "./api/riddlesApi.js";
 
-import {findPlayerByName, createPlayer, updatePlayer, getAllPlayers} from "./api/playersApi.js";
+import { findPlayerByName, createPlayer, updatePlayer, getAllPlayers } from "./api/playersApi.js";
 
 const rl = readline.createInterface({ input, output });
 
@@ -71,10 +71,16 @@ while (running) {
 
                 console.log(`\nYour time: ${time} seconds`);
 
-                if (player.lowestTime === null || time < player.lowestTime) {
-                    player.lowestTime = time;
-                    await updatePlayer(player);
+                const result = await updatePlayer({
+                    ...player,
+                    lowestTime: time
+                });
+
+                if (result.isNewRecord) {
+                    player.lowestTime = result.player.lowestTime;
                     console.log("New record!");
+                } else {
+                    console.log(`Your best time is still ${result.player.lowestTime} seconds.`);
                 }
                 break;
             }
